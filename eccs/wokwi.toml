@@ -1,0 +1,6 @@
+# Configuração para rodar a simulação pela extensão Wokwi no VS Code (opcional).
+# No site wokwi.com este arquivo não é necessário.
+[wokwi]
+version = 1
+firmware = "build/sketch.ino.bin"
+elf = "build/sketch.ino.elf"

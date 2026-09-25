@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Pelé Academia: da peneira à formação do atleta. Peneiras, cartão do jogador, check-in de bem-estar e rede de cuidado." />
+    <meta name="theme-color" content="#070f15" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1f3a'/%3E%3Ccircle cx='32' cy='32' r='17' fill='%23eda335'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' font-size='20' fill='%230b1f3a'%3EPA%3C/text%3E%3C/svg%3E" />
+    <title>Pelé Academia</title>
+    <style>
+      /* Primeira pintura antes do JavaScript: mesmo fundo e slogan da abertura animada. */
+      html { background: #070f15; }
+      #root:empty { display: none; }
+      #pre { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: #070f15; color: #fff; font-family: 'Arial Narrow', Impact, 'Segoe UI', sans-serif; text-align: center; padding: 24px; }
+      #pre strong { font-size: clamp(2.25rem, 8vw, 4rem); font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; color: #eda335; }
+      #pre span { font-size: clamp(1rem, 3vw, 1.35rem); opacity: 0.85; }
+      #root:not(:empty) ~ #pre { display: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="pre" aria-hidden="true"><strong>Pelé Academia</strong><span>Onde o legado entra em campo</span></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

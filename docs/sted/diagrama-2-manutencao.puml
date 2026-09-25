@@ -1,0 +1,41 @@
+@startuml diagrama-2-manutencao
+' Pelé Academia · Diagrama de casos de uso 2 · Manutenção do atleta
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Atleta" as atleta
+actor "Treinador /\nEquipe técnica" as treinador
+actor "Fisioterapeuta" as fisio
+actor "Psicólogo(a)" as psico
+
+rectangle "Pelé Academia · Manutenção do atleta" {
+  usecase "UC12 Fazer check-in de bem-estar" as UC12
+  usecase "UC13 Calcular índice de bem-estar" as UC13
+  usecase "UC14 Ver evolução do cartão" as UC14
+  usecase "UC15 Avaliar treino\n(atributos e falhas)" as UC15
+  usecase "UC16 Calcular nota do treino" as UC16
+  usecase "UC17 Atualizar atributos\ne overall do cartão" as UC17
+  usecase "UC18 Sugerir encaminhamento" as UC18
+  usecase "UC19 Acompanhar carga\nde treino (sRPE)" as UC19
+  usecase "UC20 Registrar jogo e estatísticas" as UC20
+  usecase "UC21 Validar placar e estatísticas" as UC21
+  usecase "UC22 Encaminhar ao cuidado (agendar)" as UC22
+}
+
+atleta --> UC12
+atleta --> UC14
+treinador --> UC15
+treinador --> UC19
+treinador --> UC20
+treinador --> UC22
+UC22 --> fisio
+UC22 --> psico
+
+UC12 ..> UC13 : <<include>>
+UC15 ..> UC16 : <<include>>
+UC16 ..> UC17 : <<include>>
+UC18 ..> UC16 : <<extend>>\n{3 treinos < 6,5}
+UC18 ..> UC13 : <<extend>>\n{3 check-ins <= 2,5}
+UC20 ..> UC21 : <<include>>
+@enduml

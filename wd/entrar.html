@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Entre na Pelé Academia como atleta ou como equipe da academia.">
+  <title>Entrar · Pelé Academia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+  <a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="topo-caixa">
+      <a class="marca" href="index.html"><span class="marca-logo" aria-hidden="true">PA</span>Pelé Academia</a>
+      <nav aria-label="Principal">
+        <a href="index.html">Talentos</a>
+        <a href="cadastro.html">Criar conta</a>
+        <a href="entrar.html">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="login">
+    <form id="form-entrar" class="painel formulario" novalidate>
+      <div class="cabecalho">
+        <h1>Entrar</h1>
+        <p class="suave">Onde o legado entra em campo.</p>
+      </div>
+
+      <div id="erro-geral" class="resumo-erros" role="alert"></div>
+
+      <fieldset>
+        <legend>Quem é você?</legend>
+        <div class="escolha-tipo">
+          <label class="consentimento"><input type="radio" name="tipo" value="atleta" checked> Atleta</label>
+          <label class="consentimento"><input type="radio" name="tipo" value="equipe"> Equipe da academia</label>
+        </div>
+      </fieldset>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="username" aria-describedby="erro-email">
+        <p id="erro-email" class="erro" data-erro="email"></p>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input id="senha" name="senha" type="password" autocomplete="current-password" aria-describedby="erro-senha">
+        <p id="erro-senha" class="erro" data-erro="senha"></p>
+        <button id="mostrar-senha" type="button" class="botao botao-contorno" aria-pressed="false">Mostrar senha</button>
+      </div>
+
+      <div class="acoes">
+        <a class="botao botao-contorno" href="cadastro.html">Criar conta</a>
+        <button type="submit" class="botao botao-marca">Entrar</button>
+      </div>
+
+      <p class="suave">Contas de demonstração (senha <code>pele2026</code>):</p>
+      <div class="demo" aria-label="Contas de demonstração">
+        <button type="button" data-demo="0">Kauã · candidato</button>
+        <button type="button" data-demo="1">João · atleta</button>
+        <button type="button" data-demo="2">Lucas · atleta</button>
+        <button type="button" data-demo="3">Carla · equipe</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/validation.js"></script>
+</body>
+</html>

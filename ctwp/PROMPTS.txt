@@ -1,0 +1,44 @@
+PELÉ ACADEMIA · SPRINT 3 · CTWP
+Prompts de IA generativa usados na construção do gêmeo lógico em Python
+Grupo Zenyth · Ferramenta: Claude (Anthropic)
+
+A lógica do script espelha o MVP Visual. Os prompts abaixo foram usados, nesta ordem,
+para definir as regras (que valem tanto no app quanto no Python) e para gerar o script.
+
+1. Leitura dos requisitos
+   Prompt: "Le o documento da Sprint 3 e ve o que eu tenho que entregar de cada matéria."
+   Uso: levantamento das entregas por disciplina, incluindo a exigência do CTWP de espelhar os fluxos, evoluir as estruturas de dados, sincronizar a navegação e usar validações reais.
+
+2. Regras do cartão do jogador
+   Prompt: "Cada jogador novo começa no app com estatísticas iniciais tipo FIFA (ataque 55, defesa 45, força 45, habilidade 55) e só muda de acordo com a nota do treinador; card com foto, overall, país e estatísticas."
+   Uso: constantes ATRIBUTOS_INICIAIS, PESOS por posição, funções aplicar_treino, aplicar_avaliacao, atributos_atuais e calcular_overall.
+
+3. Cartão do goleiro
+   Prompt: "Precisa ter card de goleiro também com (chute, elasticidade, posicionamento)."
+   Uso: ATRIBUTOS_GOLEIRO e pesos próprios do goleiro no overall.
+
+4. Avaliação rápida de treino estilo Sofascore
+   Prompt: "Tem que ter uma aba onde o olheiro avalie o treino de cada atleta de forma rápida e prática, avaliar no que o jogador está pecando, colocar estatísticas de cada jogador tipo Sofascore (atacante fez 4 gols, volante desarmou 4 vezes) e isso influencie na nota de treino."
+   Uso: tabelas STATS, STATS_POR_POSICAO e FALHAS; função calcular_nota_treino (base 6,5, pesos por estatística, −0,3 por falha, ajuste do treinador) e fluxo_avaliar_treino.
+
+5. Rede de cuidado
+   Prompt: "Quero que o app cheque o status do atleta, tipo 3 dias que ele não faz um treino bom: psicólogo ou fisio."
+   Uso: função verificar_cuidado (3 treinos abaixo de 6,5 + sinais dos check-ins) e fluxos de agendamento e encaminhamento.
+
+6. Montagem de times
+   Prompt: "Preciso de uma aba onde o olheiro/treinador monte os times, mesclados de acordo com cada posição e nota."
+   Uso: função montar_times (distribuição setor por setor equilibrando o overall) e fluxo_montar_times.
+
+7. Registro de jogos
+   Prompt: "Após cada jogo o técnico tem que colocar gols, assistências e defesas, e essas estatísticas vão para o perfil do jogador."
+   Uso: função validar_jogo (gols ≤ placar, assistências ≤ gols), totais_do_atleta e fluxo_registrar_jogo.
+
+8. Rotas até a peneira
+   Prompt: "Quero implementar integrações com Uber, Moovit e Waze pro atleta ter uma base de como ir para o endereço da peneira."
+   Uso: função opcoes_de_rota, que monta os mesmos links usados pelo botão "Como chegar" do app.
+
+9. Geração do gêmeo lógico
+   Prompt: "Acredito que você consegue fazer todos [os entregáveis da Sprint 3]" (com o pedido do CTWP: espelhar os fluxos das telas em um menu interativo com while e input, evoluir listas, dicionários e matrizes, modularizar em funções e aplicar as validações reais).
+   Uso: estrutura completa de pele_academia.py (menus, fluxos, dados de demonstração e matriz de notas do painel), revisado e testado pelo grupo com entradas simuladas em todos os fluxos.
+
+Observação: o código gerado foi lido, ajustado e testado pelo grupo antes da entrega. As regras de negócio foram definidas pelo grupo a partir da proposta do projeto; a IA foi usada para transformá-las em código e para revisar validações.

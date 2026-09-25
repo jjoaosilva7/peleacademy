@@ -1,0 +1,157 @@
+/*
+ * Animação de abertura (preloader) inspirada em "desenho vetorial":
+ * 1. cada peça do logo é contornada;        0,5s a 1,9s
+ * 2. o dourado preenche e os pontos somem;  1,9s a 2,4s
+ * 3. o logo sobe, passa um brilho e entra o slogan;  2,5s a 3,6s
+ * 4. zoom para dentro da figura e o app aparece.     3,7s a 4,6s
+ */
+
+.abertura {
+  --ouro: #d9ab4d;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--abertura-fundo);
+  color: #fff;
+  animation: ab-sai 0.45s ease-in 4.2s forwards;
+}
+
+.abertura-palco {
+  display: flex;
+  width: min(92vw, 620px);
+  flex-direction: column;
+  align-items: center;
+}
+
+.abertura-logo {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform-origin: 49.4% 50%;
+  animation: ab-zoom 0.6s cubic-bezier(0.7, 0, 0.84, 0) 3.72s forwards;
+}
+
+
+
+.abertura-contorno {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.9);
+  stroke-width: 0.4;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ab-traca 0.8s cubic-bezier(0.6, 0, 0.2, 1) calc(0.5s + var(--i) * 0.16s) forwards, ab-some 0.35s ease-out 2.3s forwards;
+}
+
+.abertura-ancora {
+  fill: var(--abertura-fundo);
+  stroke: #fff;
+  stroke-width: 0.2;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ab-ponto 0.25s ease-out calc(0.45s + var(--i) * 0.16s + var(--j) * 0.05s) both, ab-some 0.3s ease-in 2.2s forwards;
+}
+
+
+.abertura-cheio {
+  opacity: 0;
+  animation: ab-aparece 0.5s ease-out calc(1.9s + var(--i) * 0.05s) forwards;
+}
+
+.abertura-marca {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ab-sobe 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 2.5s forwards;
+}
+
+.abertura-brilho {
+  transform: translateX(-40px) skewX(-20deg);
+  animation: ab-brilho 0.9s ease-in-out 2.85s forwards;
+}
+
+.abertura-slogan {
+  margin-top: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 3.6vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  clip-path: inset(0 100% 0 0);
+  transform: translateY(0.35rem);
+  animation: ab-revela 0.7s ease-out 2.7s forwards, ab-esconde 0.3s ease-in 3.55s forwards;
+}
+
+.abertura-linha {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin-top: 0.75rem;
+  background: var(--ouro);
+  transform: scaleX(0);
+  animation: ab-linha 0.5s ease-out 2.95s forwards, ab-some 0.3s ease-in 3.55s forwards;
+}
+
+.abertura-pular {
+  position: absolute;
+  right: 1rem;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border: 1px solid rgb(255 255 255 / 0.45);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  animation: ab-aparece 0.3s ease-out 0.8s forwards;
+}
+
+.abertura-pular:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+
+/* Quem pediu menos movimento no sistema vê só o logo pronto por um instante. */
+.abertura-reduzida,
+.abertura-reduzida * {
+  animation: none !important;
+}
+
+.abertura-reduzida .abertura-contorno,
+.abertura-reduzida .abertura-ancora {
+  display: none;
+}
+
+.abertura-reduzida .abertura-cheio,
+.abertura-reduzida .abertura-slogan {
+  clip-path: none;
+  transform: none;
+}
+
+.abertura-reduzida .abertura-pular {
+  opacity: 1;
+  filter: none;
+}
+
+.abertura-reduzida .abertura-linha {
+  transform: none;
+}
+
+@keyframes ab-aparece { to { opacity: var(--alvo, 1); } }
+@keyframes ab-some { to { opacity: 0; } }
+@keyframes ab-revela { to { clip-path: inset(0 0 0 0); transform: none; } }
+@keyframes ab-esconde { to { clip-path: inset(0 0 0 100%); } }
+@keyframes ab-traca { to { stroke-dashoffset: 0; } }
+@keyframes ab-ponto {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes ab-sobe { to { transform: translateY(-2.5px) scale(0.94); } }
+@keyframes ab-brilho { to { transform: translateX(210px) skewX(-20deg); } }
+@keyframes ab-foco { to { opacity: 1; filter: blur(0); } }
+@keyframes ab-linha { to { transform: scaleX(1); } }
+@keyframes ab-zoom { to { transform: scale(14); } }
+@keyframes ab-sai { to { opacity: 0; visibility: hidden; } }

@@ -1,0 +1,279 @@
+/*
+ * Cartão do jogador em HTML e CSS puros (sem texto em SVG), para renderizar igual
+ * no Chrome, no Safari do iPhone e no Firefox. Todas as medidas usam a unidade --u,
+ * que vale largura do cartão ÷ 250, então o desenho escala sem perder proporção.
+ */
+.cj {
+  --u: 0.96px;
+  --claro: var(--cartao-ouro-claro);
+  --medio: var(--cartao-ouro);
+  --escuro: var(--cartao-ouro-escuro);
+  /* Contorno externo (moldura) e interno (corpo), em porcentagem de cada caixa */
+  --recorte: polygon(
+    50% 1.1%, 56.4% 6%, 63.2% 4.6%, 92.8% 9.1%, 95.2% 11.4%,
+    95.2% 72%, 95% 74%, 93.6% 76.2%, 90.8% 77.7%,
+    50% 98.9%,
+    9.2% 77.7%, 6.4% 76.2%, 5% 74%, 4.8% 72%,
+    4.8% 11.4%, 7.2% 9.1%, 36.8% 4.6%, 43.6% 6%
+  );
+  --recorte-corpo: polygon(
+    50% 0%, 56.7% 4.4%, 65.4% 3.1%, 99% 7.8%, 100% 8.75%,
+    100% 73.4%, 99.8% 75.3%, 98.1% 77.2%, 96.2% 78.1%,
+    50% 100%,
+    3.8% 78.1%, 1.9% 77.2%, 0.2% 75.3%, 0% 73.4%,
+    0% 8.75%, 1% 7.8%, 34.6% 3.1%, 43.3% 4.4%
+  );
+  position: relative;
+  flex: none;
+  width: calc(var(--u) * 250);
+  height: calc(var(--u) * 350);
+  margin: 0;
+  font-family: var(--font-cartao);
+  color: var(--claro);
+  line-height: 1;
+}
+
+.cj-base { --claro: var(--cartao-areia-claro); --medio: var(--cartao-areia); --escuro: var(--cartao-areia-escuro); }
+.cj-elite { filter: drop-shadow(0 0 calc(var(--u) * 18) rgb(237 163 53 / 0.45)); }
+
+.cj-moldura,
+.cj-corpo {
+  position: absolute;
+}
+
+.cj-moldura {
+  inset: 0;
+  clip-path: var(--recorte);
+  background: linear-gradient(180deg, var(--claro) 0%, var(--medio) 35%, var(--claro) 62%, var(--escuro) 100%);
+}
+
+.cj-corpo {
+  inset: calc(var(--u) * 15) calc(var(--u) * 21);
+  clip-path: var(--recorte-corpo);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--cartao-fundo), var(--cartao-fundo-escuro));
+}
+
+/*
+ * Faixa lateral: parte de cima em metal, parte de baixo escura, com uma linha metálica à direita.
+ * Ela fica afastada da moldura por uma margem azul-marinho, para o metal da faixa não se fundir
+ * com o metal da moldura e o cartão não parecer mais pesado de um lado.
+ */
+.cj-faixa {
+  position: absolute;
+  top: calc(var(--u) * 7);
+  bottom: calc(var(--u) * 7);
+  left: calc(var(--u) * 6);
+  width: calc(var(--u) * 43);
+  background: var(--cartao-fundo-escuro);
+  border-right: calc(var(--u) * 1.2) solid var(--medio);
+  border-radius: calc(var(--u) * 2) 0 0 calc(var(--u) * 2);
+  overflow: hidden;
+}
+
+.cj-faixa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--claro) 0%, var(--medio) 35%, var(--claro) 62%, var(--escuro) 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 58%);
+}
+
+.cj-ovr {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--u) * 4);
+  padding-top: calc(var(--u) * 24);
+  color: var(--cartao-tinta);
+  text-align: center;
+}
+
+.cj-ovr-rotulo { font-size: calc(var(--u) * 11); font-weight: 600; letter-spacing: 0.04em; }
+.cj-ovr-numero { font-size: calc(var(--u) * 34); font-weight: 800; }
+.cj-ovr-posicao { font-size: calc(var(--u) * 15); font-weight: 700; }
+.cj-ovr-linha { width: calc(var(--u) * 23); height: calc(var(--u) * 0.8); margin-top: calc(var(--u) * 3); background: var(--cartao-tinta); opacity: 0.5; }
+.cj-ovr-bandeira { width: calc(var(--u) * 20); height: calc(var(--u) * 13.3); margin-top: calc(var(--u) * 3); border-radius: calc(var(--u) * 1); display: block; }
+
+/* Nome da academia de baixo para cima, centralizado na parte escura da faixa */
+.cj-wordmark {
+  position: absolute;
+  left: 0;
+  top: calc(var(--u) * 185);
+  bottom: calc(var(--u) * 70);
+  width: calc(var(--u) * 49);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cj-wordmark > span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: calc(var(--u) * 11.5);
+  font-weight: 600;
+  letter-spacing: calc(var(--u) * 0.8);
+  white-space: nowrap;
+  color: var(--claro);
+}
+
+/* Área da foto (ou da marca-d'água) */
+.cj-foto {
+  position: absolute;
+  top: 0;
+  left: calc(var(--u) * 49);
+  right: 0;
+  height: calc(var(--u) * 185);
+  overflow: hidden;
+}
+
+.cj-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Enquadra o rosto: puxa a foto para cima e aproxima um pouco */
+  object-position: 50% 18%;
+  transform: scale(1.12);
+  transform-origin: 50% 22%;
+  display: block;
+}
+
+.cj-marca-dagua {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: calc(var(--u) * 10);
+}
+
+.cj-marca-dagua svg { width: calc(var(--u) * 84); height: auto; }
+.cj-marca-dagua span {
+  position: absolute;
+  font-size: calc(var(--u) * 64);
+  font-weight: 700;
+  color: var(--cartao-marca-dagua);
+  padding-top: calc(var(--u) * 6);
+}
+
+/* Faixa inferior com nome, atributos e medalha */
+.cj-banda {
+  position: absolute;
+  top: calc(var(--u) * 185);
+  left: calc(var(--u) * 49);
+  right: 0;
+  bottom: 0;
+  background: var(--cartao-fundo-escuro);
+  border-top: calc(var(--u) * 1) solid var(--cartao-marca-dagua);
+}
+
+.cj-nome {
+  position: absolute;
+  top: calc(var(--u) * 12);
+  left: calc(var(--u) * 14);
+  right: calc(var(--u) * 14);
+  overflow: hidden;
+  text-align: center;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cj-atributos {
+  position: absolute;
+  top: calc(var(--u) * 43);
+  left: calc(var(--u) * 12);
+  right: calc(var(--u) * 21);
+  display: grid;
+  gap: calc(var(--u) * 2);
+  padding: calc(var(--u) * 5) 0 calc(var(--u) * 4);
+  border-top: calc(var(--u) * 0.7) solid var(--medio);
+  border-bottom: calc(var(--u) * 0.7) solid var(--medio);
+  background: rgb(255 255 255 / 0.06);
+  border-radius: calc(var(--u) * 3);
+  text-align: center;
+}
+
+.cj-atributo-sigla { display: block; font-family: var(--font-sans); font-size: calc(var(--u) * 6.5); font-weight: 600; letter-spacing: 0.05em; opacity: 0.85; }
+.cj-atributo-valor { display: block; margin-top: calc(var(--u) * 2); font-size: calc(var(--u) * 20); font-weight: 800; }
+
+.cj-medalha {
+  position: absolute;
+  bottom: calc(var(--u) * 15.5);
+  left: calc(var(--u) * 41.5);
+  width: calc(var(--u) * 27);
+  height: calc(var(--u) * 27);
+  border-radius: 50%;
+  border: calc(var(--u) * 1.4) solid var(--medio);
+  background: #fff;
+  overflow: hidden;
+}
+
+.cj-medalha img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Filete metálico interno: só um traço, sem texto, em SVG */
+.cj-filete { position: absolute; inset: 0; pointer-events: none; }
+
+/*
+ * Formato reto: cantos arredondados, sem escudo, sem cortes diagonais e sem texto girado.
+ * É o formato padrão, porque renderiza idêntico em qualquer navegador.
+ */
+.cj-reto .cj-moldura { clip-path: none; border-radius: calc(var(--u) * 14); }
+.cj-reto .cj-corpo { clip-path: none; inset: calc(var(--u) * 7); border-radius: calc(var(--u) * 9); }
+.cj-reto .cj-filete { display: none; }
+.cj-reto .cj-faixa {
+  top: calc(var(--u) * 6);
+  bottom: calc(var(--u) * 6);
+  left: calc(var(--u) * 6);
+  width: calc(var(--u) * 43);
+  border-radius: calc(var(--u) * 5) 0 0 calc(var(--u) * 5);
+}
+.cj-reto .cj-faixa::before { clip-path: polygon(0 0, 100% 0, 100% 46%, 0 46%); }
+.cj-reto .cj-faixa::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46%;
+  height: calc(var(--u) * 1);
+  background: var(--medio);
+}
+.cj-reto .cj-wordmark {
+  top: auto;
+  left: calc(var(--u) * 49);
+  right: 0;
+  bottom: calc(var(--u) * 8);
+  width: auto;
+  height: calc(var(--u) * 12);
+}
+.cj-reto .cj-wordmark > span {
+  writing-mode: horizontal-tb;
+  transform: none;
+  font-size: calc(var(--u) * 7.5);
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+.cj-reto .cj-banda { top: calc(var(--u) * 185); }
+.cj-reto .cj-nome { top: calc(var(--u) * 14); }
+.cj-reto .cj-atributos {
+  top: calc(var(--u) * 50);
+  left: calc(var(--u) * 16);
+  right: calc(var(--u) * 16);
+}
+.cj-reto .cj-medalha {
+  bottom: calc(var(--u) * 24);
+  left: 50%;
+  margin-left: calc(var(--u) * -13.5);
+}
+.cj-reto .cj-faixa .cj-ovr { padding-top: calc(var(--u) * 22); }
+.cj-reto .cj-numero {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--u) * 10);
+  text-align: center;
+  font-size: calc(var(--u) * 13);
+  font-weight: 700;
+  color: var(--claro);
+}

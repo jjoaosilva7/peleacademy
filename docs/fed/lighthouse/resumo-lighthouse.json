@@ -1,0 +1,58 @@
+[
+  {
+    "tela": "entrar",
+    "url": "http://localhost:4173/#/entrar",
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  {
+    "tela": "cadastro",
+    "url": "http://localhost:4173/#/cadastro",
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  {
+    "tela": "atleta-inicio",
+    "url": "http://localhost:4173/#/atleta",
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  {
+    "tela": "atleta-evolucao",
+    "url": "http://localhost:4173/#/atleta/evolucao",
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  {
+    "tela": "atleta-peneiras",
+    "url": "http://localhost:4173/#/atleta/peneiras",
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  {
+    "tela": "equipe-painel",
+    "url": "http://localhost:4173/#/equipe",
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  {
+    "tela": "equipe-treino",
+    "url": "http://localhost:4173/#/equipe/treino",
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  }
+]

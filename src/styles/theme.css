@@ -1,0 +1,275 @@
+/*
+ * Design system da Pelé Academia traduzido para tokens do Tailwind v4.
+ * Estilo: site esportivo de impacto. Blocos azul-marinho com títulos condensados em caixa alta,
+ * fundo cinza-azulado claro, cartões brancos bem arredondados, ouro Gamboge #EDA335 como destaque
+ * e azul-céu como cor secundária. As cores ficam em variáveis para o tema claro e o escuro.
+ */
+
+:root {
+  color-scheme: light;
+  --papel: #eef2f6;
+  --superficie: #ffffff;
+  --superficie-2: #e3eaf2;
+  --linha: #d3dce6;
+  --tinta: #0b1f3a;
+  --tinta-suave: #55657a;
+  --marca: #0b1f3a;
+  --marca-forte: #061428;
+  --sobre-marca: #ffffff;
+  --ceu: #2f77a6;
+  --ceu-claro: #7fb6db;
+  --acento: #eda335;
+  --acento-forte: #d98e1f;
+  --sobre-acento: #0b1f3a;
+  --acento-suave: #f7e4c6;
+  --ouro-claro: #f7dc9c;
+  --realce: #0b1f3a;
+  --realce-suave: #dfe8f2;
+  --sucesso: #1b6b43;
+  --sucesso-suave: #dff1e6;
+  --atencao: #8a4b00;
+  --atencao-suave: #fbe6c8;
+  --erro: #b42318;
+  --erro-suave: #fce8e6;
+  --foco: #eda335;
+  --cromo: #0b1f3a;
+  --cromo-linha: #24395a;
+  --nota-elite: #004e72;
+  --nota-otima: #1b6b43;
+  --nota-boa: #eda335;
+  --nota-regular: #e8792b;
+  --nota-ruim: #b42318;
+  --sombra: 0 1px 2px rgb(11 31 58 / 0.04), 0 16px 40px -24px rgb(11 31 58 / 0.25);
+
+  /* Cores dos anéis de progresso (decorativas; o valor sempre aparece em texto ao lado) */
+  --anel-verde: #5fc58a;
+  --anel-rosa: #f28dbd;
+  --anel-azul: #6cb8e6;
+  --anel-coral: #f07f73;
+  --anel-amarelo: #f5c451;
+  --anel-lilas: #8b93f0;
+
+  /* Fundo da abertura (preloader): quase preto, como o fundo do logo */
+  --abertura-fundo: #070f15;
+
+  /* Cartão do jogador: é um objeto físico, então as cores não mudam no modo escuro */
+  --cartao-fundo: #0c3354;
+  --cartao-fundo-escuro: #071f35;
+  --cartao-marca-dagua: #164570;
+  --cartao-tinta: #0b2b3c;
+  --cartao-ouro-claro: #f7dc9c;
+  --cartao-ouro: #eda335;
+  --cartao-ouro-escuro: #a86a1f;
+  --cartao-areia-claro: #f6ebdf;
+  --cartao-areia: #e8d1ba;
+  --cartao-areia-escuro: #a98c70;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --papel: #07111f;
+    --superficie: #0f1d33;
+    --superficie-2: #172a45;
+    --linha: #26395a;
+    --tinta: #f1f4f8;
+    --tinta-suave: #a5b1c2;
+    --marca: #173a66;
+    --marca-forte: #0b1f3a;
+    --sobre-marca: #ffffff;
+    --ceu: #3f8dc2;
+    --ceu-claro: #7fb6db;
+    --acento: #eda335;
+    --acento-forte: #f3b85e;
+    --sobre-acento: #0b1f3a;
+    --acento-suave: #3a2a10;
+    --realce: #8cc8ea;
+    --realce-suave: #16344a;
+    --sucesso: #7fd3a5;
+    --sucesso-suave: #12352a;
+    --atencao: #f4c46a;
+    --atencao-suave: #3a2b0e;
+    --erro: #ff9e94;
+    --erro-suave: #3f1714;
+    --foco: #eda335;
+    --cromo: #050b14;
+    --cromo-linha: #1c2a3c;
+    --nota-elite: #1f6f9a;
+    --nota-otima: #1b6b43;
+    --nota-boa: #eda335;
+    --nota-regular: #e8792b;
+    --nota-ruim: #b42318;
+    --sombra: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 40px -24px rgb(0 0 0 / 0.7);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --papel: #07111f;
+  --superficie: #0f1d33;
+  --superficie-2: #172a45;
+  --linha: #26395a;
+  --tinta: #f1f4f8;
+  --tinta-suave: #a5b1c2;
+  --marca: #173a66;
+  --marca-forte: #0b1f3a;
+  --sobre-marca: #ffffff;
+  --ceu: #3f8dc2;
+  --ceu-claro: #7fb6db;
+  --acento: #eda335;
+  --acento-forte: #f3b85e;
+  --sobre-acento: #0b1f3a;
+  --acento-suave: #3a2a10;
+  --realce: #8cc8ea;
+  --realce-suave: #16344a;
+  --sucesso: #7fd3a5;
+  --sucesso-suave: #12352a;
+  --atencao: #f4c46a;
+  --atencao-suave: #3a2b0e;
+  --erro: #ff9e94;
+  --erro-suave: #3f1714;
+  --foco: #eda335;
+  --cromo: #050b14;
+  --cromo-linha: #1c2a3c;
+  --nota-elite: #1f6f9a;
+  --nota-otima: #1b6b43;
+  --nota-boa: #eda335;
+  --nota-regular: #e8792b;
+  --nota-ruim: #b42318;
+  --sombra: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 40px -24px rgb(0 0 0 / 0.7);
+}
+
+@theme inline {
+  --color-papel: var(--papel);
+  --color-superficie: var(--superficie);
+  --color-superficie-2: var(--superficie-2);
+  --color-linha: var(--linha);
+  --color-tinta: var(--tinta);
+  --color-tinta-suave: var(--tinta-suave);
+  --color-marca: var(--marca);
+  --color-marca-forte: var(--marca-forte);
+  --color-sobre-marca: var(--sobre-marca);
+  --color-acento: var(--acento);
+  --color-acento-forte: var(--acento-forte);
+  --color-sobre-acento: var(--sobre-acento);
+  --color-acento-suave: var(--acento-suave);
+  --color-ouro-claro: var(--ouro-claro);
+  --color-ceu: var(--ceu);
+  --color-ceu-claro: var(--ceu-claro);
+  --color-realce: var(--realce);
+  --color-realce-suave: var(--realce-suave);
+  --color-sucesso: var(--sucesso);
+  --color-sucesso-suave: var(--sucesso-suave);
+  --color-atencao: var(--atencao);
+  --color-atencao-suave: var(--atencao-suave);
+  --color-erro: var(--erro);
+  --color-erro-suave: var(--erro-suave);
+  --color-foco: var(--foco);
+  --color-cromo: var(--cromo);
+  --color-cromo-linha: var(--cromo-linha);
+  --color-nota-elite: var(--nota-elite);
+  --color-nota-otima: var(--nota-otima);
+  --color-nota-boa: var(--nota-boa);
+  --color-nota-regular: var(--nota-regular);
+  --color-nota-ruim: var(--nota-ruim);
+  --shadow-folha: var(--sombra);
+}
+
+@theme {
+  /* Tipografia: Instrument Sans em toda a interface (títulos em peso médio, números grandes);
+     Big Shoulders Display fica só no cartão do jogador */
+  --font-display: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --font-cartao: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --font-sans: 'Instrument Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --text-numero: 3.5rem;
+  --text-numero--line-height: 1;
+
+  /* Raios */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  /* Espaçamento base e breakpoints (celular, tablet, notebook, desktop) */
+  --spacing: 0.25rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+}
+
+@layer base {
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  html {
+    height: 100%;
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  body {
+    min-height: 100%;
+    margin: 0;
+    background-color: var(--papel);
+    color: var(--tinta);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  /* Fundo escuro com grade e um brilho dourado no alto, usado na tela de entrar */
+  .fundo-noite {
+    background-color: #0b1f3a;
+    background-image:
+      radial-gradient(70% 45% at 50% 0%, rgb(217 171 77 / 0.16), transparent 70%),
+      linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 100% 100%, 32px 32px, 32px 32px;
+  }
+
+  /* Números de estatística alinhados em colunas */
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  /* Foco visível em todos os elementos interativos (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 3px solid var(--foco);
+    outline-offset: 2px;
+  }
+
+  @keyframes pulso {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.18); }
+    100% { transform: scale(1); }
+  }
+
+  .pulso {
+    animation: pulso 260ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

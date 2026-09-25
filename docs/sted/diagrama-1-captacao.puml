@@ -1,0 +1,41 @@
+@startuml diagrama-1-captacao
+' Pelé Academia · Diagrama de casos de uso 1 · Captação de atletas
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Candidato" as candidato
+actor "Responsável" as responsavel
+actor "Olheiro / Avaliador" as olheiro
+actor "Apps de rota\n(Uber, Moovit, Waze)" as apps
+
+rectangle "Pelé Academia · Captação de atletas" {
+  usecase "UC01 Criar conta de atleta" as UC01
+  usecase "UC02 Validar idade e categoria" as UC02
+  usecase "UC03 Registrar responsável\ne consentimento (LGPD)" as UC03
+  usecase "UC04 Consultar peneiras abertas" as UC04
+  usecase "UC05 Inscrever-se na peneira" as UC05
+  usecase "UC06 Verificar vagas,\ncategoria e duplicidade" as UC06
+  usecase "UC07 Ver como chegar ao CT" as UC07
+  usecase "UC08 Cancelar inscrição" as UC08
+  usecase "UC09 Avaliar candidato na peneira" as UC09
+  usecase "UC10 Calcular nota final\ne sugerir decisão" as UC10
+  usecase "UC11 Aprovar e gerar cartão inicial" as UC11
+}
+
+candidato --> UC01
+candidato --> UC04
+candidato --> UC05
+candidato --> UC08
+responsavel --> UC03
+olheiro --> UC09
+olheiro --> UC11
+UC07 --> apps
+
+UC01 ..> UC02 : <<include>>
+UC03 ..> UC01 : <<extend>>\n{menor de 18 anos}
+UC05 ..> UC06 : <<include>>
+UC07 ..> UC05 : <<extend>>
+UC09 ..> UC10 : <<include>>
+UC11 ..> UC09 : <<extend>>\n{nota final >= 7}
+@enduml

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pelé Academia · rede de talentos: siga atletas, confirme pontos fortes e filtre por posição e estado.">
+  <title>Rede de talentos · Pelé Academia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+  <a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="topo-caixa">
+      <a class="marca" href="index.html"><span class="marca-logo" aria-hidden="true">PA</span>Pelé Academia</a>
+      <nav aria-label="Principal">
+        <a href="index.html">Talentos</a>
+        <a href="cadastro.html">Criar conta</a>
+        <a href="entrar.html">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="cabecalho">
+      <h1>Rede de talentos</h1>
+      <p class="suave">Conheça outros atletas, siga quem você admira e confirme os pontos fortes de cada um. Os filtros funcionam na hora, sem recarregar a página.</p>
+    </div>
+
+    <section class="painel" aria-labelledby="titulo-filtros">
+      <h2 id="titulo-filtros" class="sr-only">Filtros</h2>
+      <form class="grade-filtros" role="search" onsubmit="return false">
+        <div class="campo">
+          <label for="filtro-busca">Nome ou apelido</label>
+          <input id="filtro-busca" type="search" autocomplete="off" placeholder="Ex.: Joãozinho">
+        </div>
+        <div class="campo">
+          <label for="filtro-posicao">Posição</label>
+          <select id="filtro-posicao"><option value="">Todas</option></select>
+        </div>
+        <div class="campo">
+          <label for="filtro-uf">Estado</label>
+          <select id="filtro-uf"><option value="">Todos</option></select>
+        </div>
+        <label class="consentimento"><input id="so-seguindo" type="checkbox"> Só quem eu sigo</label>
+        <button id="limpar-filtros" type="button" class="botao botao-contorno">Limpar filtros</button>
+      </form>
+
+      <div id="abas-feed" class="abas" role="tablist" aria-label="Situação do atleta">
+        <button type="button" role="tab" data-aba="todos" aria-selected="true">Todos</button>
+        <button type="button" role="tab" data-aba="academia" aria-selected="false" tabindex="-1">Na academia</button>
+        <button type="button" role="tab" data-aba="candidatos" aria-selected="false" tabindex="-1">Candidatos</button>
+      </div>
+
+      <p id="contagem" class="contagem" aria-live="polite"></p>
+      <ul id="lista-atletas" class="vitrine" aria-label="Atletas"></ul>
+      <p id="vazio" class="vazio oculto">Nenhum atleta com esses filtros. Tente limpar a busca.</p>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/filters.js"></script>
+  <script src="assets/js/feed.js"></script>
+</body>
+</html>

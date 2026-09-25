@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crie sua conta de atleta na Pelé Academia. Para candidatos de 7 a 20 anos.">
+  <title>Criar conta de atleta · Pelé Academia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+  <a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="topo-caixa">
+      <a class="marca" href="index.html"><span class="marca-logo" aria-hidden="true">PA</span>Pelé Academia</a>
+      <nav aria-label="Principal">
+        <a href="index.html">Talentos</a>
+        <a href="cadastro.html">Criar conta</a>
+        <a href="entrar.html">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="cabecalho">
+      <h1>Criar conta de atleta</h1>
+      <p class="suave">Para candidatos de 7 a 20 anos. Jogador de linha começa com 55 de ataque, 45 de defesa, 45 de força e 55 de habilidade; goleiro, com 45 de chute, 55 de elasticidade e 50 de posicionamento. Daí pra frente, só a nota do treinador muda os números.</p>
+    </div>
+
+    <div id="cadastro-sucesso" class="sucesso-caixa" role="status" tabindex="-1"></div>
+
+    <form id="form-cadastro" class="painel formulario" novalidate>
+      <div id="resumo-erros" class="resumo-erros" role="alert"></div>
+
+      <fieldset>
+        <legend>Sobre você</legend>
+        <div class="duas-colunas">
+          <div class="campo">
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="erro-nome">
+            <p id="erro-nome" class="erro" data-erro="nome"></p>
+          </div>
+          <div class="campo">
+            <label for="apelido">Apelido no campo <span class="suave">(opcional)</span></label>
+            <input id="apelido" name="apelido" type="text" maxlength="16" aria-describedby="dica-apelido erro-apelido">
+            <p id="dica-apelido" class="dica">Aparece no seu cartão e nas escalações. Até 16 caracteres.</p>
+            <p id="erro-apelido" class="erro" data-erro="apelido"></p>
+          </div>
+          <div class="campo">
+            <label for="nascimento">Data de nascimento</label>
+            <input id="nascimento" name="nascimento" type="date" aria-describedby="categoria-viva erro-nascimento">
+            <span id="categoria-viva" class="categoria-viva oculto"></span>
+            <p id="erro-nascimento" class="erro" data-erro="nascimento"></p>
+          </div>
+          <div class="campo">
+            <label for="posicao">Posição</label>
+            <select id="posicao" name="posicao" aria-describedby="erro-posicao"><option value="">Escolha</option></select>
+            <p id="erro-posicao" class="erro" data-erro="posicao"></p>
+          </div>
+          <div class="campo">
+            <label for="cidade">Cidade</label>
+            <input id="cidade" name="cidade" type="text" autocomplete="address-level2" aria-describedby="erro-cidade">
+            <p id="erro-cidade" class="erro" data-erro="cidade"></p>
+          </div>
+          <div class="campo">
+            <label for="uf">Estado</label>
+            <select id="uf" name="uf" aria-describedby="erro-uf"><option value="">Escolha</option></select>
+            <p id="erro-uf" class="erro" data-erro="uf"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset id="bloco-responsavel" class="oculto">
+        <legend>Responsável</legend>
+        <p class="suave">Atletas menores de 18 anos precisam de um responsável.</p>
+        <div class="duas-colunas">
+          <div class="campo">
+            <label for="responsavelNome">Nome do responsável</label>
+            <input id="responsavelNome" name="responsavelNome" type="text" aria-describedby="erro-responsavelNome">
+            <p id="erro-responsavelNome" class="erro" data-erro="responsavelNome"></p>
+          </div>
+          <div class="campo">
+            <label for="responsavelEmail">E-mail do responsável</label>
+            <input id="responsavelEmail" name="responsavelEmail" type="email" aria-describedby="erro-responsavelEmail">
+            <p id="erro-responsavelEmail" class="erro" data-erro="responsavelEmail"></p>
+          </div>
+          <div class="campo">
+            <label for="responsavelTelefone">Telefone com DDD</label>
+            <input id="responsavelTelefone" name="responsavelTelefone" type="tel" inputmode="numeric" placeholder="24 99999-0000" aria-describedby="erro-responsavelTelefone">
+            <p id="erro-responsavelTelefone" class="erro" data-erro="responsavelTelefone"></p>
+          </div>
+        </div>
+        <div class="campo">
+          <label class="consentimento"><input id="consentimento" name="consentimento" type="checkbox" aria-describedby="erro-consentimento"> Sou o responsável e autorizo o cadastro do atleta e o uso dos dados dele pela Pelé Academia, conforme a LGPD.</label>
+          <p id="erro-consentimento" class="erro" data-erro="consentimento"></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Acesso</legend>
+        <div class="duas-colunas">
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="erro-email">
+            <p id="erro-email" class="erro" data-erro="email"></p>
+          </div>
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <input id="senha" name="senha" type="password" autocomplete="new-password" aria-describedby="dica-senha erro-senha">
+            <p id="dica-senha" class="dica">Pelo menos 8 caracteres, com letras e números.</p>
+            <p id="erro-senha" class="erro" data-erro="senha"></p>
+          </div>
+          <div class="campo">
+            <label for="confirmarSenha">Repita a senha</label>
+            <input id="confirmarSenha" name="confirmarSenha" type="password" autocomplete="new-password" aria-describedby="erro-confirmarSenha">
+            <p id="erro-confirmarSenha" class="erro" data-erro="confirmarSenha"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="acoes">
+        <a class="botao botao-contorno" href="entrar.html">Já tenho conta</a>
+        <button type="submit" class="botao botao-marca">Criar conta</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/validation.js"></script>
+</body>
+</html>
