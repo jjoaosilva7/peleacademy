@@ -1,3 +1,4 @@
+// Tela de entrar: login de atleta e equipe, Google/Apple e contas de demonstração. (Guilherme de Paula Correia · Grupo Zenyth)
 import { useState, type FormEvent } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router';
 import { Eye, EyeOff, Lock, Mail, RotateCcw } from 'lucide-react';
