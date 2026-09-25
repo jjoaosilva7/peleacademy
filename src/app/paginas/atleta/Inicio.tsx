@@ -1,3 +1,4 @@
+// Tela inicial do atleta: próxima peneira, check-in do dia e cartão do jogador. (João Vitor Barbosa Silva · Grupo Zenyth)
 import { CalendarDays, ClipboardCheck, Dumbbell, PartyPopper, Search, TrendingUp } from 'lucide-react';
 import { useEstado } from '../../estado/EstadoApp';
 import { useDesempenho } from '../../estado/useDesempenho';
