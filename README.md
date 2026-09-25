@@ -250,9 +250,9 @@ Cada integrante trabalhou em uma branch própria, aberta a partir da `main`, e i
 
 | Integrante | RM | Branch | PR | Telas / módulos |
 | --- | --- | --- | --- | --- |
-| Guilherme de Paula Correia | RM572126 | `feature/entrada-e-cadastro` | #1 | Abertura animada, Entrar (login atleta/equipe, Google e Apple), Cadastro com validação e LGPD, design system (`theme.css`) |
-| João Vitor Barbosa Silva | RM570109 | `feature/area-do-atleta` | #2 | Início do atleta, Peneiras e Como chegar (Uber, Moovit, Waze, Maps), Check-in, Evolução e cartão do jogador, Talentos, Perfil com foto 3x4 |
-| Lucas Rodrigues de Carvalho | RM573788 | `feature/area-da-equipe` | #3 | Painel da equipe, Avaliar treino, Times, Jogos, Peneiras e avaliação de candidatos, Ficha do atleta e Encaminhar ao cuidado |
+| Guilherme de Paula Correia | RM572126 | `feature/entrada-e-cadastro` | #1 (mesclado) | Abertura animada, Entrar (login atleta/equipe, Google e Apple), Cadastro com validação e LGPD, design system (`theme.css`) |
+| João Vitor Barbosa Silva | RM570109 | `feature/area-do-atleta` | #2 (mesclado) | Início do atleta, Peneiras e Como chegar (Uber, Moovit, Waze, Maps), Check-in, Evolução e cartão do jogador, Talentos, Perfil com foto 3x4 |
+| Lucas Rodrigues de Carvalho | RM573788 | `feature/area-da-equipe` | pendente | Painel da equipe, Avaliar treino, Times, Jogos, Peneiras e avaliação de candidatos, Ficha do atleta e Encaminhar ao cuidado |
 
 ## Qualidade (Lighthouse e WCAG)
 
