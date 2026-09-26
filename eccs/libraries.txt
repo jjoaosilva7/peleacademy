@@ -1,5 +1,4 @@
 # Bibliotecas instaladas automaticamente pelo Wokwi (uma por linha)
-DHT sensor library
-Adafruit Unified Sensor
+DHTesp
 Adafruit GFX Library
 Adafruit SSD1306
