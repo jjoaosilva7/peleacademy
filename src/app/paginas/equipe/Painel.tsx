@@ -1,3 +1,4 @@
+// Painel da equipe: alertas de cuidado, encaminhamentos e próximas peneiras. (Lucas Rodrigues de Carvalho · Grupo Zenyth)
 import { ClipboardCheck, ClipboardList, HeartPulse, ShieldCheck, Timer, UsersRound } from 'lucide-react';
 import { useEstado } from '../../estado/EstadoApp';
 import { useDesempenho } from '../../estado/useDesempenho';
